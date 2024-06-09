@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Playlist {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to create their playlist
+        System.out.println("Welcome to Desert Island Playlist!");
+
+        // Create an array to hold favorite songs
+        String[] favoriteSongs = new String[10];
+
+        // Prompt the user to input their favorite songs
+        System.out.println("Enter your 10 favorite songs in the format 'Artist - Song Title':");
+        for (int i = 0; i < favoriteSongs.length; i++) {
+            favoriteSongs[i] = scanner.nextLine();
+        }
+
+        // Print the first three songs in the favorite songs array
+        System.out.println("Your first three favorite songs are:");
+        for (int i = 0; i < 3; i++) {
+            System.out.println((i + 1) + ". " + favoriteSongs[i]);
+        }
+
+        // Create an ArrayList for the desert island playlist
+        ArrayList<String> desertIslandPlaylist = new ArrayList<>();
+
+        // Add 5 favorite songs to the desert island playlist
+        System.out.println("Adding 5 favorite songs to your desert island playlist:");
+        for (int i = 0; i < 5; i++) {
+            desertIslandPlaylist.add(favoriteSongs[i]);
+        }
+
+        // Print the desert island playlist
+        System.out.println("Your desert island playlist:");
+        System.out.println(desertIslandPlaylist);
+
+        // Add all songs from favoriteSongs to desertIslandPlaylist
+        desertIslandPlaylist.addAll(Arrays.asList(favoriteSongs));
+
+        // Print the number of songs in the playlist
+        System.out.println("Total songs in the playlist: " + desertIslandPlaylist.size());
+
+        // Remove songs until only 10 songs are left
+        while (desertIslandPlaylist.size() > 10) {
+            desertIslandPlaylist.remove(desertIslandPlaylist.size() - 1);
+        }
+
+        // Print the final playlist
+        System.out.println("Your final desert island playlist:");
+        System.out.println(desertIslandPlaylist);
+
+        // Swap two songs in the playlist
+        System.out.println("Let's swap two songs in your playlist.");
+        System.out.println("Enter the index of the first song to swap (0-9):");
+        int index1 = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        System.out.println("Enter the index of the second song to swap (0-9):");
+        int index2 = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        // Swap the songs
+        String temp = desertIslandPlaylist.get(index1);
+        desertIslandPlaylist.set(index1, desertIslandPlaylist.get(index2));
+        desertIslandPlaylist.set(index2, temp);
+
+        // Print the final playlist after swapping
+        System.out.println("Your final desert island playlist after swapping:");
+        System.out.println(desertIslandPlaylist);
+
+        scanner.close();
+    }
+}
